@@ -106,8 +106,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
       <section className="outcomes-section">
         <div className="outcomes-heading">
-          <span>OUTCOME / O QUE ESSA ENTREGA PROVA</span>
-          <h2>Resultado técnico,<br />sem métrica inventada.</h2>
+          <span>RESULTADOS / MÉTRICAS</span>
+          <h2>Resultados e métricas.</h2>
         </div>
         <div className="outcome-grid">
           {project.outcomes.map((outcome, index) => (
