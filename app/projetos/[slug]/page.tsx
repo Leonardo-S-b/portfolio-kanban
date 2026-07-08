@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, GitFork, LockKeyhole } from "lucide-react";
+import { ProjectVideo } from "@/components/project-video";
+import { LazyArchitecture } from "@/components/lazy-architecture";
+import { architectures } from "@/data/architectures";
 import { getProject, projects } from "@/data/projects";
 
 export function generateStaticParams() {
@@ -12,6 +15,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = getProject(slug);
 
   if (!project) notFound();
+  const architecture = architectures[project.slug];
 
   return (
     <main className="project-page" style={{ "--project-color": project.color } as React.CSSProperties}>
@@ -45,6 +49,38 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </aside>
       </section>
 
+      {project.slug === "clima-agora" && (
+        <section className="project-demo" aria-labelledby="demo-title">
+          <div className="demo-copy">
+            <span>DEMO / EVIDÊNCIA DE ENTREGA</span>
+            <h2 id="demo-title">O aplicativo<br />em movimento.</h2>
+            <p>
+              A interface reage à busca e transforma dados de clima, localização e viagem em uma experiência direta no celular.
+            </p>
+            <div className="demo-annotation" aria-hidden="true">
+              <span>↳</span> interface real,<br />sem mockup
+            </div>
+          </div>
+          <div className="demo-paper">
+            <span className="demo-tape demo-tape-left" aria-hidden="true" />
+            <span className="demo-tape demo-tape-right" aria-hidden="true" />
+            <div className="demo-paper-heading">
+              <span>APP-01 / SCREEN RECORD</span>
+              <b>CLIMA AGORA</b>
+            </div>
+            <ProjectVideo src="/assets/telaClimaAgora.webm" title={project.title} />
+            <div className="demo-playback-meta">
+              <span><i /> app em execução</span>
+              <span>WEBM / LOOP</span>
+            </div>
+            <div className="demo-caption">
+              <span>Flutter · fluxo real</span>
+              <span>01 take</span>
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="case-board" aria-label="Etapas do projeto">
         <div className="case-board-title">
           <span>FLUXO DO PROJETO</span>
@@ -65,16 +101,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </section>
 
       <section className="flow-section">
-        <div>
-          <span>ARCHITECTURE / HIGH LEVEL</span>
-          <h2>O caminho da informação</h2>
+        <LazyArchitecture architecture={architecture} />
+      </section>
+
+      <section className="outcomes-section">
+        <div className="outcomes-heading">
+          <span>OUTCOME / O QUE ESSA ENTREGA PROVA</span>
+          <h2>Resultado técnico,<br />sem métrica inventada.</h2>
         </div>
-        <div className="flow-diagram">
-          {project.flow.map((node, index) => (
-            <div className="flow-node-wrap" key={node}>
-              <div className="flow-node"><span>0{index + 1}</span>{node}</div>
-              {index < project.flow.length - 1 && <span className="flow-arrow">→</span>}
-            </div>
+        <div className="outcome-grid">
+          {project.outcomes.map((outcome, index) => (
+            <article key={outcome.title}>
+              <span>0{index + 1}</span>
+              <h3>{outcome.title}</h3>
+              <p>{outcome.text}</p>
+            </article>
           ))}
         </div>
       </section>

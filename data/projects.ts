@@ -15,6 +15,7 @@ export type Project = {
   private?: boolean;
   highlight: string;
   facts: { label: string; value: string }[];
+  outcomes: { title: string; text: string }[];
   story: { title: string; text: string; stamp: string }[];
   flow: string[];
 };
@@ -38,6 +39,11 @@ export const projects: Project[] = [
       { label: "Arquitetura", value: "Feature-based" },
       { label: "Integrações", value: "Clima, mapas e IA" },
       { label: "Plataformas", value: "Mobile + Web" },
+    ],
+    outcomes: [
+      { title: "Integrações sob controle", text: "Clima, geocoding, rotas e IA ficam separados por responsabilidade, sem transformar a interface em um bloco único." },
+      { title: "Segredo fora do aplicativo", text: "A chave da IA permanece no backend, que também aplica CORS, limite de requisições e normalização da resposta." },
+      { title: "Experiência resiliente", text: "Preferências locais, cache de clima e rotas alternativas mantêm partes essenciais úteis mesmo diante de falhas externas." },
     ],
     story: [
       {
@@ -82,6 +88,11 @@ export const projects: Project[] = [
       { label: "Resiliência", value: "Fallback local" },
       { label: "Sync", value: "Eventos por dispositivo" },
     ],
+    outcomes: [
+      { title: "Mudanças rastreáveis", text: "Cada operação relevante gera um evento de sincronização associado ao dispositivo que realizou a ação." },
+      { title: "Uso em mais de um dispositivo", text: "A identidade persistida permite descobrir alterações realizadas em outras instalações do aplicativo." },
+      { title: "Falha sem tela vazia", text: "O histórico local funciona como alternativa quando a API não está disponível." },
+    ],
     story: [
       {
         title: "Contexto",
@@ -125,6 +136,11 @@ export const projects: Project[] = [
       { label: "Senha", value: "bcrypt 12 rounds" },
       { label: "Contrato", value: "OpenAPI" },
     ],
+    outcomes: [
+      { title: "Autorização progressiva", text: "Operações de cliente, gestão e administração exigem níveis diferentes de acesso." },
+      { title: "Recuperação protegida", text: "Códigos de redefinição têm validade, uso único e são armazenados somente como hash." },
+      { title: "Histórico preservado", text: "Logs registram tentativas e ações; soft delete remove viagens da operação sem apagar seu contexto." },
+    ],
     story: [
       {
         title: "Contexto",
@@ -167,6 +183,11 @@ export const projects: Project[] = [
       { label: "Qualidade", value: "Jest + Supertest" },
       { label: "Infra", value: "Docker + Nginx" },
       { label: "Dados", value: "Prisma + MySQL" },
+    ],
+    outcomes: [
+      { title: "Um produto, vários públicos", text: "Site público, clientes, fotógrafos e administradores compartilham o domínio sem compartilhar as mesmas permissões." },
+      { title: "Mídia com regra de acesso", text: "Fotos, capas, galerias e eventos privados passam por autorização antes de chegar ao storage." },
+      { title: "Entrega reproduzível", text: "Testes automatizados, Docker, Nginx e migrações documentadas reduzem diferenças entre ambientes." },
     ],
     story: [
       {

@@ -8,7 +8,10 @@ import {
   MoveRight,
 } from "lucide-react";
 import { ProjectCard } from "@/components/project-card";
+import { RecruiterSummary } from "@/components/recruiter-summary";
 import { projects } from "@/data/projects";
+
+const linkedin = "https://www.linkedin.com/in/leonardo-souza-bezerra-15247a355/";
 
 const stageData = [
   {
@@ -42,10 +45,14 @@ export default function Home() {
         <nav aria-label="Navegação principal">
           <Link href="#quadro">Projetos</Link>
           <Link href="#sobre">Sobre</Link>
+          <Link href="#experiencia">Experiência</Link>
           <a href="https://github.com/Leonardo-S-b" target="_blank" rel="noreferrer">
             GitHub <ArrowUpRight size={14} />
           </a>
+          <a href={linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14} /></a>
+          <RecruiterSummary />
         </nav>
+        <div className="mobile-summary"><RecruiterSummary /></div>
         <span className="live-status"><i /> disponível para conversar</span>
       </header>
 
@@ -157,12 +164,57 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="experience-section" id="experiencia">
+        <div className="experience-heading">
+          <span className="section-index">EXPERIÊNCIA / SERVIÇOS</span>
+          <h2>Trabalhos prestados para empresas reais.</h2>
+          <p>
+            Atuação como programador em múltiplos squads, construindo e evoluindo ferramentas usadas no dia a dia de operações e clientes.
+          </p>
+        </div>
+        <article className="confidential-card">
+          <span className="confidential-tape" aria-hidden="true" />
+          <header>
+            <span>ATUAÇÃO PROFISSIONAL</span>
+            <b>EM PRODUÇÃO</b>
+          </header>
+          <h3>Produtos, automações e sistemas internos</h3>
+          <p>
+            Desenvolvimento de ferramentas de dados e relacionamento, automações para marketing e SEO, crawlers, soluções web e integrações de inteligência artificial.
+          </p>
+          <ul>
+            <li>BI, CRM e fluxos de leads</li>
+            <li>Automação de SEO e inbound</li>
+            <li>Crawlers e estruturas web</li>
+            <li>IA aplicada a conteúdo e mídia</li>
+          </ul>
+          <footer>
+            <span>BACKEND · AUTOMAÇÃO · DADOS · IA</span>
+            <span>MÚLTIPLOS SQUADS</span>
+          </footer>
+        </article>
+      </section>
+
       <section className="contact-section">
-        <p>NOVO CARD / NOVA CONVERSA</p>
-        <h2>Tem um sistema que precisa sair do quadro?</h2>
-        <a href="https://github.com/Leonardo-S-b" target="_blank" rel="noreferrer">
-          falar pelo GitHub <ArrowUpRight size={20} />
-        </a>
+        <div className="contact-copy">
+          <p>NOVO CARD / NOVA CONVERSA</p>
+          <h2>Tem um sistema que precisa sair do quadro?</h2>
+          <span>Conte o contexto. A tecnologia vem depois do problema.</span>
+        </div>
+        <article className="contact-card">
+          <header><span>NEW-LEAD</span><b>ABERTO</b></header>
+          <dl>
+            <div><dt>Responsável</dt><dd>Leonardo</dd></div>
+            <div><dt>Assunto</dt><dd>Produto digital</dd></div>
+            <div><dt>Prioridade</dt><dd>Vamos conversar</dd></div>
+          </dl>
+          <a href={linkedin} target="_blank" rel="noreferrer">
+            criar conversa no LinkedIn <ArrowUpRight size={18} />
+          </a>
+          <a className="contact-secondary" href="https://github.com/Leonardo-S-b" target="_blank" rel="noreferrer">
+            consultar GitHub
+          </a>
+        </article>
       </section>
 
       <footer>
