@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "leonardo-portfolio",
+  "account_id": "64b843ec2a3d82343042e8a591c4cc48",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-07-07",
   "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
